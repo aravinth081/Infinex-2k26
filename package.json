@@ -1,0 +1,23 @@
+{
+  "name": "innovation-hacks",
+  "version": "2.0.0",
+  "description": "INNOVATION HACKS — BUILD • INNOVATE • IMPACT | Official Technology Platform & Hackathon Ecosystem",
+  "type": "module",
+  "scripts": {
+    "build": "echo Static build ready",
+    "dev": "node scripts/server.cjs",
+    "start": "node scripts/server.cjs",
+    "serve": "node scripts/server.cjs"
+  },
+  "keywords": [
+    "innovation-hacks",
+    "hackathon",
+    "aivora",
+    "ai",
+    "technology",
+    "certificates",
+    "innovation"
+  ],
+  "author": "Innovation Hacks",
+  "license": "ISC"
+}

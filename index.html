@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>HORIZON X 2K26 | Global AI Hackathon</title>
+
+  <meta name="description"
+    content="Build innovative AI-powered solutions to real-world challenges. Explore Artificial Intelligence, Generative AI, Machine Learning, Computer Vision, NLP, RAG, and AI Agents through a global innovation experience organized by Innovation Hacks.">
+  <meta name="keywords"
+    content="HORIZON X 2K26, Global AI Hackathon, AI Engineering, Innovation Hacks, Machine Learning, Generative AI, Computer Vision, NLP, RAG, AI Agents, Hackathon 2026">
+  <meta name="author" content="Innovation Hacks">
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HORIZON X 2K26 | Global AI Hackathon">
+  <meta property="og:description"
+    content="Build innovative AI-powered solutions to real-world challenges. A global AI hackathon experience organized by Innovation Hacks.">
+  <meta property="og:image" content="assets/brand/horizon-x-logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/brand/horizon-x-logo.png">
+  <link rel="apple-touch-icon" href="assets/brand/horizon-x-logo.png">
+
+  <!-- Google Fonts: Inter, Space Grotesk, Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800&family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css?v=16.0">
+
+  <!-- Firebase & Cloudinary Cloud Backend & PDF Libraries -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/cms-content.js?v=2.0"></script>
+  <script src="js/cms-engine.js?v=2.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="cert-engine.js?v=9.0"></script>
+</head>
+
+<body>
+
+  <!-- ===================================================================
+       HEADER & NAVIGATION BAR
+       =================================================================== -->
+  <header class="navbar" id="navbar" role="banner">
+    <div class="container nav-container">
+
+      <!-- Brand Logo & Identity -->
+      <a href="#home" class="nav-brand" aria-label="HORIZON X 2K26 Global Hackathon">
+        <img src="assets/brand/horizon-x-logo.png" alt="HORIZON X 2K26 Official Logo" class="nav-brand-logo" width="48"
+          height="48"
+          style="border-radius:10px;object-fit:cover;border:1px solid #E2E8F0;">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title"
+            style="letter-spacing:-0.02em;color:#172554;font-weight:800;">HORIZON
+            X 2K26</span>
+          <span class="nav-brand-tagline">GLOBAL AI HACKATHON • INNOVATION HACKS</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu (Home, About, Certificates, FAQ) -->
+      <nav class="nav-menu" role="navigation" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#" class="nav-link">About &amp; Timeline</a>
+        <a href="#certificates" class="nav-link">Certification</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Nav Actions: Register on Unstop & Join Community (Matching Mockup) -->
+      <div class="nav-actions">
+        <a href="https://unstop.com/p/horizon-x-2k26-global-hackathon-2k26-innovation-hacks-1757170" target="_blank"
+          rel="noopener noreferrer" class="btn-nav-unstop">
+          <span>Register on Unstop</span>
+          <span class="btn-nav-arrow">↗</span>
+        </a>
+        <a href="https://whatsapp.com/channel/0029VbDbywN2f3EJaickj41y" target="_blank" rel="noopener noreferrer"
+          class="btn-nav-whatsapp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0;">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.71 1.457h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+              fill="#25D366" />
+          </svg>
+          <span>Join Community</span>
+        </a>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Toggle mobile menu" aria-expanded="false"
+          aria-controls="mobileDrawer">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <aside class="mobile-drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="nav-brand">
+        <img src="assets/brand/horizon-x-logo.png" alt="HORIZON X 2K26 Logo" class="nav-brand-logo" width="40"
+          height="40" style="border-radius:8px;object-fit:cover;">
+        <div class="nav-brand-text">
+          <span class="nav-brand-title"
+            style="font-size: 1.1rem;color:#172554;font-weight:800;">HORIZON
+            X 2K26</span>
+          <span class="nav-brand-tagline" style="font-size: 0.6rem;">GLOBAL AI HACKATHON</span>
+        </div>
+      </div>
+      <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close mobile navigation">✕</button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link active"><span>Home</span> <span>→</span></a></li>
+      <li><a href="#about" class="mobile-nav-link"><span>About &amp; Timeline</span> <span>→</span></a></li>
+      <li><a href="#certificates" class="mobile-nav-link"><span>Certification</span> <span>→</span></a></li>
+      <li><a href="#faq" class="mobile-nav-link"><span>FAQ</span> <span>→</span></a></li>
+    </ul>
+
+    <div class="mobile-drawer-cta">
+      <a href="https://unstop.com/p/horizon-x-2k26-global-hackathon-2k26-innovation-hacks-1757170" target="_blank"
+        rel="noopener noreferrer" class="btn-drawer-unstop">
+        <span>Register on Unstop</span>
+        <span class="btn-icon">↗</span>
+      </a>
+      <a href="https://whatsapp.com/channel/0029VbDbywN2f3EJaickj41y" target="_blank" rel="noopener noreferrer"
+        class="btn-drawer-whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="flex-shrink: 0;">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.71 1.457h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+            fill="#25D366" />
+        </svg>
+        <span>Join Community</span>
+      </a>
+    </div>
+  </aside>
+  <!-- ===================================================================
+       HERO SECTION — SILICON VALLEY SAAS
+       =================================================================== -->
+  <section class="hero-section" id="home">
+    <!-- Ambient corner wave decorations: Left & Right -->
+    <div class="hero-swoosh-bg hero-swoosh-left" aria-hidden="true">
+      <img src="assets/brand/hero-bottom-swoosh.svg" alt="" class="hero-swoosh-img" loading="eager">
+    </div>
+    <div class="hero-swoosh-bg hero-swoosh-right" aria-hidden="true">
+      <img src="assets/brand/hero-bottom-swoosh-right.svg" alt="" class="hero-swoosh-img" loading="eager">
+    </div>
+
+    <!-- Decorative dot grid accents from mockup (Top-Left & Top-Right) -->
+    <div class="hero-dot-grid hero-dot-grid-tl" aria-hidden="true"></div>
+    <div class="hero-dot-grid hero-dot-grid-tr" aria-hidden="true"></div>
+
+    <div class="container hero-container">
+      <div class="hero-grid">
+
+        <!-- Left Column: Content & Calls-to-Action -->
+        <div class="hero-content">
+          <!-- Eyebrow Pill -->
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            <span>HORIZON X 2K26 • GLOBAL AI HACKATHON</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 class="hero-title">
+            HORIZON X 2K26 <br class="hero-title-break">
+            <span class="hero-blue-text">GLOBAL AI HACKATHON</span>
+          </h1>
+
+          <!-- Supporting Paragraph -->
+          <p class="hero-lead">
+            Build innovative AI-powered solutions to real-world challenges. Explore Artificial Intelligence, Generative
+            AI, Machine Learning, Computer Vision, Natural Language Processing, RAG, and AI Agents through a global
+            innovation experience organized by Innovation Hacks.
+          </p>
+
+          <!-- Dual CTA Action Buttons -->
+          <div class="hero-actions">
+            <a href="#certificates" class="btn btn-hero-primary">
+              <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="6"></circle>
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path>
+              </svg>
+              <span>Verify &amp; Claim Certificate</span>
+              <span class="btn-arrow">→</span>
+            </a>
+            <a href="https://unstop.com/p/horizon-x-2k26-global-hackathon-2k26-innovation-hacks-1757170"
+              target="_blank" rel="noopener noreferrer" class="btn btn-hero-secondary">
+              <span>Register on Unstop</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+          </div>
+
+
+
+        </div>
+
+        <!-- Right Column: 3D AI Robot / Futuristic AI Horizon Showcase -->
+        <div class="hero-visual" id="heroVisual">
+          <div class="hero-robot-wrapper" id="heroRobotWrapper">
+            <!-- Dynamic Aura & Futuristic AI Glow Effects -->
+            <div class="hero-robot-aura" aria-hidden="true"></div>
+            <div class="hero-bulb-glow" aria-hidden="true"></div>
+
+            <!-- Twinkling Idea Sparkles -->
+            <span class="hero-sparkle hero-sparkle-1" aria-hidden="true">✦</span>
+            <span class="hero-sparkle hero-sparkle-2" aria-hidden="true">★</span>
+            <span class="hero-sparkle hero-sparkle-3" aria-hidden="true">✦</span>
+
+            <div class="hero-ai-art-container"
+              style="position:relative;border-radius:24px;overflow:hidden;border:1px solid rgba(0,217,255,0.3);box-shadow:0 0 40px rgba(0,217,255,0.2), 0 20px 60px rgba(0,0,0,0.6);">
+              <img src="assets/brand/hero-ai-robot-clean.png" alt="HORIZON X 2K26 Futuristic AI Core"
+                class="hero-robot-img" id="heroRobotImg" width="600" height="600" loading="eager" fetchpriority="high"
+                style="display:block;width:100%;height:auto;object-fit:cover;border-radius:24px;">
+              <div class="hero-ai-art-overlay"
+                style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(7,11,26,0.85) 100%);pointer-events:none;">
+              </div>
+            </div>
+
+            <!-- Floating Live AI Technology Badges -->
+            <div class="hero-float-badge hero-float-badge-1" id="floatBadge1" aria-hidden="true">
+              <span class="float-badge-icon">🧠</span>
+              <div class="float-badge-text">
+                <strong>Autonomous AI Agents</strong>
+                <span>LLMs • RAG • Computer Vision</span>
+              </div>
+            </div>
+
+            <div class="hero-float-badge hero-float-badge-2" id="floatBadge2" aria-hidden="true">
+              <span class="float-badge-icon">⚡</span>
+              <div class="float-badge-text">
+                <strong>HORIZON X 2K26</strong>
+                <span>Global Innovation by Innovation Hacks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Floating Audience / Eligibility Showcase Ribbon -->
+      <div class="hero-audience-card">
+        <!-- Undergraduates & Postgraduates -->
+        <div class="hero-audience-item">
+          <div class="hero-audience-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+          </div>
+          <div class="hero-audience-text">
+            <strong class="hero-audience-title">Undergrad &amp; Postgrad</strong>
+            <span class="hero-audience-desc">Open to students across all degrees</span>
+          </div>
+        </div>
+
+        <!-- Engineering Students -->
+        <div class="hero-audience-item">
+          <div class="hero-audience-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg>
+          </div>
+          <div class="hero-audience-text">
+            <strong class="hero-audience-title">Engineering Students</strong>
+            <span class="hero-audience-desc">CS, AI, Data Science &amp; Allied Fields</span>
+          </div>
+        </div>
+
+        <!-- Management & Strategy -->
+        <div class="hero-audience-item">
+          <div class="hero-audience-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </div>
+          <div class="hero-audience-text">
+            <strong class="hero-audience-title">Management &amp; Tech</strong>
+            <span class="hero-audience-desc">Product thinking &amp; scalable innovation</span>
+          </div>
+        </div>
+
+        <!-- Arts, Commerce, Science -->
+        <div class="hero-audience-item">
+          <div class="hero-audience-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <div class="hero-audience-text">
+            <strong class="hero-audience-title">Arts, Commerce &amp; Science</strong>
+            <span class="hero-audience-desc">Multidisciplinary global AI problem solvers</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       ABOUT INNOVATION HACKS
+       =================================================================== -->
+  <!-- ===================================================================
+       ABOUT INNOVATION HACKS — NATIVE SILICON VALLEY SAAS ARCHITECTURE
+       =================================================================== -->
+  <section class="section about-native-section" id="about">
+    <!-- Ambient ambient glow behind robot -->
+    <div class="about-ambient-glow" aria-hidden="true"></div>
+
+    <!-- Ambient Corner Wave Cyber-Swooshes: Left & Right -->
+    <div class="about-wave-bg about-wave-left" aria-hidden="true">
+      <img src="assets/brand/about-bottom-wave-left.svg" alt="" class="about-wave-img" loading="lazy">
+    </div>
+    <div class="about-wave-bg about-wave-right" aria-hidden="true">
+      <img src="assets/brand/about-bottom-wave-right.svg" alt="" class="about-wave-img" loading="lazy">
+    </div>
+
+    <div class="container about-container">
+
+      <!-- Top Row: Left Content & Right 3D AI Robot -->
+      <div class="about-top-grid">
+
+        <!-- Left Content Column -->
+        <div class="about-info-col">
+          <!-- Eyebrow Pill -->
+          <div class="about-eyebrow">
+            <span class="about-eyebrow-dot"></span>
+            <span>OUR VISION &amp; PURPOSE</span>
+          </div>
+
+          <!-- Main Title (About + Gradient Innovation Hacks + Dash Bar) -->
+          <h2 class="about-main-title">
+            <span class="about-title-lead">About</span>
+            <span class="about-title-highlight">Innovation Hacks</span>
+          </h2>
+          <div class="about-blue-bar" aria-hidden="true"></div>
+
+          <!-- Supporting Paragraph -->
+          <p class="about-lead-desc">
+            Innovation Hacks is a technology and innovation initiative focused on turning creative ideas into practical
+            solutions through technology, hackathons, software development, and learning opportunities. We empower
+            aspiring developers and creators to solve real-world challenges.
+          </p>
+        </div>
+
+        <!-- Right 3D Visual Column -->
+        <div class="about-robot-col" id="aboutRobotCol">
+          <!-- Handwritten Note with Arrow (From Mockup) -->
+          <div class="about-handwritten-badge" aria-hidden="true">
+            <span class="badge-script">Ideas Today<br>A Better Tomorrow</span>
+            <svg class="badge-arrow-svg" viewBox="0 0 32 20" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M2 16 C10 4, 20 4, 28 3 M22 1 L29 3 L25 8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+
+          <!-- Seamless 3D AI Robot Illustration (Zero Box Boundaries) -->
+          <div class="about-robot-art-wrap" id="aboutRobotArtWrap">
+            <!-- Dynamic Aura & Cyan Electric Bulb Glow -->
+            <div class="about-robot-aura" aria-hidden="true"></div>
+            <div class="about-bulb-glow" aria-hidden="true"></div>
+
+            <!-- Twinkling Cyan & Blue Sparkles -->
+            <span class="about-sparkle about-sparkle-1" aria-hidden="true">✦</span>
+            <span class="about-sparkle about-sparkle-2" aria-hidden="true">✦</span>
+            <span class="about-sparkle about-sparkle-3" aria-hidden="true">✦</span>
+
+            <picture>
+              <source srcset="assets/brand/about-ai-robot-3d.webp" type="image/webp">
+              <img src="assets/brand/about-ai-robot-3d.png"
+                alt="Innovation Hacks 3D AI Robot holding glowing idea bulb with laptop and plant"
+                class="about-robot-art-img" id="aboutRobotArtImg" width="560" height="560" loading="lazy">
+            </picture>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Row: 3 Pillar Cards Grid (BUILD, INNOVATE, IMPACT) -->
+      <div class="about-pillars-grid">
+
+        <!-- Card 01: BUILD -->
+        <div class="about-pillar-card pillar-card-01">
+          <div class="card-top-header">
+            <span class="card-pill-idx">01</span>
+            <div class="card-icon-halo halo-monitor">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+                <polyline points="9 8 6 11 9 14"></polyline>
+                <polyline points="15 8 18 11 15 14"></polyline>
+              </svg>
+            </div>
+          </div>
+          <h3 class="card-pillar-title">BUILD</h3>
+          <p class="card-pillar-desc">Turn ideas into practical digital products with reliable code and thoughtful
+            design.</p>
+          <div class="card-action-row">
+            <a href="#certificates" class="card-round-arrow-btn" aria-label="Explore Build certificates and projects">
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 02: INNOVATE -->
+        <div class="about-pillar-card pillar-card-02">
+          <div class="card-top-header">
+            <span class="card-pill-idx">02</span>
+            <div class="card-icon-halo halo-bulb">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z">
+                </path>
+                <line x1="9" y1="21" x2="15" y2="21"></line>
+                <line x1="12" y1="2" x2="12" y2="4"></line>
+                <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+                <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"></line>
+              </svg>
+            </div>
+          </div>
+          <h3 class="card-pillar-title">INNOVATE</h3>
+          <p class="card-pillar-desc">Explore AI, emerging technologies, and creative approaches to solve problems.</p>
+          <div class="card-action-row">
+            <a href="#certificates" class="card-round-arrow-btn" aria-label="Explore Innovation certificates">
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 03: IMPACT -->
+        <div class="about-pillar-card pillar-card-03">
+          <div class="card-top-header">
+            <span class="card-pill-idx">03</span>
+            <div class="card-icon-halo halo-target">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+                <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+              </svg>
+            </div>
+          </div>
+          <h3 class="card-pillar-title">IMPACT</h3>
+          <p class="card-pillar-desc">Create meaningful solutions that empower communities and improve everyday life.
+          </p>
+          <div class="card-action-row">
+            <a href="#certificates" class="card-round-arrow-btn" aria-label="Explore Impact credentials">
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Center Divider: • BUILD • INNOVATE • IMPACT • -->
+      <div class="about-bottom-accent-strip">
+        <span class="strip-line"></span>
+        <span class="strip-badge-text"><span class="strip-dot">•</span> BUILD <span class="strip-dot">•</span> INNOVATE <span class="strip-dot">•</span> IMPACT <span class="strip-dot">•</span></span>
+        <span class="strip-line"></span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       HACKATHON TIMELINE & STAGES (MANAGED DYNAMICALLY VIA ADMIN CMS)
+       =================================================================== -->
+  <section class="section timeline-dark-section" id="timeline">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          <span>EVENT STAGES &amp; SCHEDULE</span>
+        </div>
+        <h2 class="section-title">Hackathon <span class="hero-blue-text">Timeline &amp; Stages</span></h2>
+        <p class="section-desc">
+          Official key dates, round submissions, midway mentorship checkpoints, and final evaluation criteria.
+        </p>
+      </div>
+
+      <div class="timeline-wrapper" id="timelineContainer">
+        <!-- Rendered dynamically by window.HorizonCMS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PROBLEM STATEMENTS & TRACKS (MANAGED DYNAMICALLY VIA ADMIN CMS)
+       =================================================================== -->
+  <section class="section tracks-section" id="tracks">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          <span>CHALLENGE DOMAINS</span>
+        </div>
+        <h2 class="section-title">Problem Statements &amp; <span class="hero-blue-text">Innovation Tracks</span></h2>
+        <p class="section-desc">
+          Choose from 5 specialized AI engineering tracks designed to tackle pressing technological bottlenecks.
+        </p>
+      </div>
+
+      <div class="challenges-grid" id="tracksContainer">
+        <!-- Rendered dynamically by window.HorizonCMS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PRIZES & REWARDS ARENA (MANAGED DYNAMICALLY VIA ADMIN CMS)
+       =================================================================== -->
+  <section class="section prizes-dynamic-section" id="prizes">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 20px;">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          <span>COMPETE &amp; WIN</span>
+        </div>
+        <h2 class="section-title">Prizes &amp; <span class="hero-blue-text">Distinction Awards</span></h2>
+        <p class="section-desc" id="prizesSubtitle">
+          Exciting Cash Rewards, Prestigious Trophies, Internship Offers &amp; Verified Global Distinctions.
+        </p>
+      </div>
+
+      <div style="display: inline-block; margin-bottom: 30px; padding: 8px 24px; border-radius: 999px; background: #EFF6FF; border: 1.5px solid #DBEAFE; color: #2563EB; font-size: 20px; font-weight: 800; letter-spacing: 0.5px;" id="prizesPoolTotal">
+        ₹50,000+ Prize Pool
+      </div>
+
+      <div class="prizes-cards-grid" id="prizesCardsRow">
+        <!-- Rendered dynamically by window.HorizonCMS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       OFFICIAL CREDENTIAL PORTAL (CLAIM YOUR OFFICIAL CERTIFICATE)
+       =================================================================== -->
+  <section class="section section-alt claim-certificate-section" id="certificates">
+    <a id="verify-credential" style="position:relative;top:-90px;display:block;"></a>
+    <div class="container claim-cert-container">
+
+      <!-- Top Section Header with Hand-Drawn Script Accents (Mockup Image 4) -->
+      <div class="claim-cert-header-wrap">
+
+        <!-- Left Handwritten Accent -->
+        <div class="claim-script-badge claim-script-left" aria-hidden="true">
+          <span class="script-text">Verified Credentials<br>Recognized Globally</span>
+          <svg class="script-underline-svg" viewBox="0 0 120 16" fill="none">
+            <path d="M4 12 C35 3, 85 3, 116 11" stroke="#2563EB" stroke-width="2.6" stroke-linecap="round"></path>
+          </svg>
+        </div>
+
+        <!-- Center Main Header -->
+        <div class="section-header claim-header-center">
+          <div class="section-eyebrow">
+            <span class="section-eyebrow-dot"></span>
+            <span id="certPortalEyebrow">OFFICIAL CREDENTIAL PORTAL</span>
+          </div>
+          <h2 class="section-title claim-main-title" id="certPortalTitle">Claim Your <span id="certPortalTitleHighlight">Official Certificate</span></h2>
+          <p class="section-desc claim-main-desc" id="certPortalDesc">
+            Generate, preview, and download your verified HORIZON X 2K26 digital credential at print-ready 300 DPI.
+          </p>
+        </div>
+
+        <!-- Right Handwritten Accent -->
+        <div class="claim-script-badge claim-script-right" aria-hidden="true">
+          <span class="script-text">Ideas into Reality<br>Authorized by Innovation Hacks</span>
+          <svg class="script-underline-svg" viewBox="0 0 120 16" fill="none">
+            <path d="M4 12 C35 4, 85 4, 116 10" stroke="#1E40AF" stroke-width="2.6" stroke-linecap="round"></path>
+          </svg>
+        </div>
+
+      </div>
+
+      <!-- Main Portal Card (Image 4 & 5 - Multi-Portal for Participants, Winners, and Judges) -->
+      <div class="claim-portal-card">
+
+        <!-- Top Pill Badge (Dynamic) -->
+        <div class="claim-card-pill-wrap">
+          <span class="claim-card-pill" id="portalCardPillBadge">PARTICIPANT CREDENTIAL</span>
+        </div>
+
+        <!-- Card Title (Dynamic) -->
+        <h3 class="claim-card-heading" id="portalCardHeading">Participant Certificate Portal</h3>
+
+        <!-- ================= PARTICIPANT PANEL ================= -->
+        <div class="claim-tab-panel active" id="tabPanelParticipant">
+          <form class="claim-card-form" onsubmit="event.preventDefault(); handleParticipantVerification();">
+
+            <div class="claim-input-group">
+              <label for="portalCertName" class="claim-input-label">RECIPIENT FULL NAME</label>
+              <input type="text" id="portalCertName" class="claim-input-field" placeholder="Enter your full name">
+            </div>
+
+            <div class="claim-input-group">
+              <label for="portalCertEmail" class="claim-input-label">EMAIL ADDRESS</label>
+              <input type="email" id="portalCertEmail" class="claim-input-field" placeholder="e.g. innovator@domain.com"
+                required>
+            </div>
+
+            <!-- Big Action Button -->
+            <button type="submit" class="btn-claim-generate" id="portalCertSubmitBtn">
+              <span class="btn-icon-bolt">⚡</span>
+              <span>Generate Certificate</span>
+            </button>
+
+          </form>
+          <!-- Dynamic Feedback Alert -->
+          <div class="cert-alert-container" id="portalCertAlert" style="display:none;margin-top:16px;"></div>
+        </div>
+
+        <!-- ================= WINNER PANEL ================= -->
+        <div class="claim-tab-panel" id="tabPanelWinner">
+          <form class="claim-card-form" onsubmit="event.preventDefault(); handleWinnerVerification();">
+
+            <div class="claim-input-group">
+              <label for="portalWinnerName" class="claim-input-label">WINNER FULL NAME</label>
+              <input type="text" id="portalWinnerName" class="claim-input-field" placeholder="Enter your name" required>
+            </div>
+
+            <div class="claim-input-group">
+              <label for="portalWinnerTier" class="claim-input-label">AWARD DISTINCTION TIER</label>
+              <select id="portalWinnerTier" class="claim-select-field">
+                <option value="winner1">🥇 1st Prize Winner — Global Champion</option>
+                <option value="winner2">🥈 2nd Prize Winner — Global Runner-Up</option>
+                <option value="winner3">🥉 3rd Prize Winner — 2nd Runner-Up</option>
+              </select>
+            </div>
+
+            <div class="claim-input-group">
+              <label for="portalWinnerEmail" class="claim-input-label">WINNER PASSKEY</label>
+              <input type="text" id="portalWinnerEmail" class="claim-input-field" placeholder="Enter passkey" required>
+            </div>
+
+            <!-- Big Action Button -->
+            <button type="submit" class="btn-claim-generate" id="portalWinnerSubmitBtn">
+              <span class="btn-icon-bolt">🏆</span>
+              <span>Generate Winner Certificate</span>
+            </button>
+
+          </form>
+          <!-- Dynamic Feedback Alert -->
+          <div class="cert-alert-container" id="portalWinnerAlert" style="display:none;margin-top:16px;"></div>
+
+        </div>
+
+        <!-- ================= JUDGE PANEL ================= -->
+        <div class="claim-tab-panel" id="tabPanelJudge">
+          <form class="claim-card-form" onsubmit="event.preventDefault(); handleJudgeVerification();">
+
+            <div class="claim-input-group">
+              <label for="portalJudgeName" class="claim-input-label">HONORABLE JUDGE NAME</label>
+              <input type="text" id="portalJudgeName" class="claim-input-field" placeholder="Enter honorable judge name"
+                required>
+            </div>
+
+            <div class="claim-input-group">
+              <label for="portalJudgeRole" class="claim-input-label">EVALUATOR CREDENTIAL CATEGORY</label>
+              <select id="portalJudgeRole" class="claim-select-field">
+                <option value="judge">🎖️ Official Judge &amp; Evaluator</option>
+              </select>
+            </div>
+
+            <div class="claim-input-group">
+              <label for="portalJudgeEmail" class="claim-input-label">OFFICIAL JUDGE CODE</label>
+              <input type="text" id="portalJudgeEmail" class="claim-input-field" placeholder="Enter judge code"
+                required>
+            </div>
+
+            <!-- Big Action Button -->
+            <button type="submit" class="btn-claim-generate" id="portalJudgeSubmitBtn">
+              <span class="btn-icon-bolt">🎓</span>
+              <span>Generate Judge Certificate</span>
+            </button>
+
+          </form>
+          <!-- Dynamic Feedback Alert -->
+          <div class="cert-alert-container" id="portalJudgeAlert" style="display:none;margin-top:16px;"></div>
+
+        </div>
+
+        <!-- Portal Switcher Buttons (Image 5 + Winners & Judges) -->
+        <div class="claim-portal-switcher">
+          <button type="button" class="portal-switch-btn active" id="btnPortalParticipant"
+            onclick="switchPortalTab('participant')">
+            <span>🚀 Participant Portal</span>
+          </button>
+          <button type="button" class="portal-switch-btn" id="btnPortalWinner" onclick="switchPortalTab('winner')">
+            <span>🏆 Winner Portal</span>
+          </button>
+          <button type="button" class="portal-switch-btn" id="btnPortalJudge" onclick="switchPortalTab('judge')">
+            <span>⚖️ Judge Portal</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Dark Navy CTA Banner (Image 5) -->
+      <div class="claim-cta-banner">
+        <div class="claim-cta-content">
+          <h3 class="claim-cta-heading">Ready to Earn Your Official Certificate?</h3>
+          <p class="claim-cta-text">
+            Register on Unstop now with your team (2–4 members). Hack for 36 hours, build real-world AI &amp; Web3
+            solutions, and receive verified credentials.
+          </p>
+        </div>
+        <div class="claim-cta-actions">
+          <a href="https://unstop.com/p/horizon-x-2k26-global-hackathon-2k26-innovation-hacks-1757170"
+            target="_blank" rel="noopener noreferrer" class="btn-cta-unstop">
+            <span>Register on Unstop</span>
+            <span class="btn-cta-arrow">→</span>
+          </a>
+          <a href="https://whatsapp.com/channel/0029VbDbywN2f3EJaickj41y" target="_blank" rel="noopener noreferrer"
+            class="btn-cta-whatsapp"
+            style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; color: #FFFFFF !important; text-decoration: none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#25D366" stroke-width="2.2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+            <span style="color: #FFFFFF !important; font-weight: 700; line-height: 1; display: inline-block;">Join
+              WhatsApp Group</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FAQ SECTION (5 OFFICIAL HORIZON X 2K26 FAQS)
+       =================================================================== -->
+  <section class="section section-alt" id="faq">
+    <div class="container">
+
+      <div class="section-header">
+        <div class="section-eyebrow">
+          <span class="section-eyebrow-dot"></span>
+          <span>Frequently Asked Questions</span>
+        </div>
+        <h2 class="section-title">Got <span>Questions?</span></h2>
+        <p class="section-desc">
+          Official answers, eligibility rules, challenge tracks, and guidelines for the HORIZON X 2K26 Global AI Hackathon.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>1. What is the HORIZON X 2K26 Global AI Hackathon?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            HORIZON X 2K26 is a premier global AI hackathon organized by <strong>Innovation Hacks</strong> and hosted on the <strong>Unstop</strong> platform. It unites ambitious student developers, researchers, and AI creators worldwide to build breakthrough, real-world solutions leveraging cutting-edge Artificial Intelligence, Machine Learning, Computer Vision, Generative AI, and Autonomous AI Agents.
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>2. Who is eligible to participate and what is the team format?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            The hackathon is open globally to all undergraduate and postgraduate students across all disciplines — including Engineering, Computer Science, AI &amp; Data Science, Management, Commerce, and Sciences — as well as independent tech innovators. Participation is flexible: you can compete as a <strong>solo innovator or in a team of 1 to 4 members</strong>.
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>3. What challenge tracks and domains are featured in HORIZON X 2K26?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Participants can innovate across 5 specialized, future-facing domains:
+            <ol style="margin-top: 10px; margin-left: 20px; line-height: 1.8;">
+              <li><strong>Autonomous AI Agents &amp; Everyday AI:</strong> Intelligent assistants, workflow automation, and LLM/RAG solutions.</li>
+              <li><strong>Smart &amp; Sustainable Future:</strong> Green tech, energy optimization, smart agriculture, and climate intelligence.</li>
+              <li><strong>Digital Trust, Safety &amp; Cybersecurity:</strong> AI threat detection, privacy-preserving systems, and anti-fraud engines.</li>
+              <li><strong>Inclusive &amp; Assistive Technology:</strong> AI solutions for accessibility, healthcare diagnostics, and education equity.</li>
+              <li><strong>Future of Work &amp; Enterprise Automation:</strong> AI copilots, generative workflows, and next-gen productivity tools.</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>4. How do I register and where do I find the official rules and schedule?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            All official registrations, guidelines, round submissions, and schedule timelines are conducted exclusively through Unstop. You can view full event details and register your team directly on the <a href="https://unstop.com/p/horizon-x-2k26-global-hackathon-2k26-innovation-hacks-1757170" target="_blank" rel="noopener noreferrer" style="color: #2563EB; text-decoration: underline; font-weight: 600;">Official Unstop HORIZON X 2K26 Portal ↗</a>.
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+          <button type="button" class="faq-question" aria-expanded="false">
+            <span>5. Will participants receive verified certificates and credentials?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Yes! Every participant who registers and submits a qualifying project in accordance with official rules receives an authentic, tamper-evident <strong>Certificate of Participation</strong> verifiable directly through our online certification portal. Winning distinction teams receive official <strong>Certificates of Achievement</strong> along with online internship opportunities with Innovation Hacks, and evaluators receive <strong>Certificates of Appreciation</strong>.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       FOOTER (DEEP NAVY & WHITE)
+       =================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <!-- Brand Summary -->
+        <div class="footer-brand-wrap">
+          <div class="footer-brand">
+            <img src="assets/brand/innovation-hacks-logo.png" alt="Innovation Hacks Logo" class="footer-brand-logo"
+              width="44" height="44">
+            <div>
+              <div class="footer-brand-title">Innovation Hacks</div>
+              <div class="footer-tagline">BUILD • INNOVATE • IMPACT</div>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            A technology innovation platform empowering students, developers, and creators to transform ambitious ideas
+            into impactful digital reality through hackathons and learning opportunities.
+          </p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div>
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#about" class="footer-link">About Us</a></li>
+            <li><a href="#certificates" class="footer-link">Certification</a></li>
+            <li><a href="winner.html" class="footer-link">Winner Portal</a></li>
+            <li><a href="judges.html" class="footer-link">Judge Portal</a></li>
+            <li><a href="control.html" class="footer-link" target="_blank">Admin Console</a></li>
+            <li><a href="#faq" class="footer-link">Frequently Asked Questions</a></li>
+          </ul>
+        </div>
+
+
+
+        <!-- Official Listing & Connect -->
+        <div>
+          <h4 class="footer-heading">Official Platform</h4>
+          <div class="footer-meta-box">
+            <a href="https://unstop.com/p/horizon-x-2k26-global-hackathon-2k26-innovation-hacks-1757170"
+              target="_blank" rel="noopener noreferrer" class="footer-meta-link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                </path>
+              </svg>
+              <span>HORIZON X 2K26 on Unstop</span>
+              <span style="margin-left: auto;">↗</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom" style="justify-content: center; text-align: center;">
+        <div class="footer-copyright">
+          © <span id="currentYear">2026</span> Innovation Hacks. All rights reserved. BUILD • INNOVATE • IMPACT.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ===================================================================
+       ACCESSIBLE CERTIFICATE MODAL
+       =================================================================== -->
+  <div class="modal-overlay" id="certGalleryModal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle">
+    <div class="modal-dialog">
+
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h3 id="certModalTitle">Certificate of Participation</h3>
+          <p id="certModalCategory">Official Verified Credential</p>
+        </div>
+        <button type="button" class="modal-close-btn" id="certModalClose"
+          aria-label="Close certificate modal">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-cert-stage">
+          <canvas id="certModalCanvas" class="is-hidden" style="display: none;"></canvas>
+          <img id="certModalImage" class="is-hidden" src="" alt="Full Certificate Preview" style="display: none;">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <div class="modal-footer-info">
+          🔒 Authentic Innovation Hacks Credential Record
+        </div>
+        <div class="modal-footer-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="certModalDownloadBtn">
+            <span>📷 Download PNG (HD)</span>
+          </button>
+          <button type="button" class="btn btn-primary btn-sm" id="certModalPdfBtn">
+            <span>📄 Download Official PDF</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       SPOTLIGHT SEARCH MODAL
+       =================================================================== -->
+  <div class="search-modal-overlay" id="searchModalOverlay" role="dialog" aria-modal="true"
+    aria-label="Search Innovation Hacks">
+    <div class="search-modal-dialog">
+      <div class="search-input-wrap">
+        <svg class="search-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="spotlightSearchInput" class="search-modal-input"
+          placeholder="Search hackathons, certificates, challenges, prizes, FAQ..." autocomplete="off">
+        <button type="button" class="search-modal-close" id="searchModalClose" aria-label="Close search">✕</button>
+      </div>
+
+      <div class="search-results-list" id="searchResultsList">
+        <div class="search-group-title">Portals &amp; Quick Links</div>
+        <a href="control.html" class="search-result-item" id="searchItemAdmin">
+          <span class="search-item-icon">🔐</span>
+          <div class="search-item-info">
+            <strong>Admin Panel Studio (/admin)</strong>
+            <span>Authorized access to certificate registry, rosters &amp; analytics</span>
+          </div>
+          <span class="search-item-badge">Admin</span>
+        </a>
+        <a href="winner.html" class="search-result-item">
+          <span class="search-item-icon">🏆</span>
+          <div class="search-item-info">
+            <strong>Winner Distinction &amp; Merit Portal</strong>
+            <span>1st, 2nd, 3rd Winner &amp; Finalist Certificate Generation</span>
+          </div>
+          <span class="search-item-badge">Winners</span>
+        </a>
+        <a href="judges.html" class="search-result-item">
+          <span class="search-item-icon">⚖️</span>
+          <div class="search-item-info">
+            <strong>Judge &amp; Evaluator Appreciation Portal</strong>
+            <span>Honorable Judge &amp; Evaluator Certificate Verification</span>
+          </div>
+          <span class="search-item-badge">Judges</span>
+        </a>
+        <a href="#home" class="search-result-item">
+          <span class="search-item-icon">🚀</span>
+          <div class="search-item-info">
+            <strong>HORIZON X 2K26 Global AI Hackathon</strong>
+            <span>Flagship AI hackathon, themes, timeline &amp; registration</span>
+          </div>
+          <span class="search-item-badge">Hackathon</span>
+        </a>
+        <a href="#certificates" class="search-result-item">
+          <span class="search-item-icon">📜</span>
+          <div class="search-item-info">
+            <strong>Certificates Gallery &amp; Verification</strong>
+            <span>Preview, download HD PNG/PDF and verify credentials</span>
+          </div>
+          <span class="search-item-badge">Credentials</span>
+        </a>
+        <a href="#challenges" class="search-result-item">
+          <span class="search-item-icon">💡</span>
+          <div class="search-item-info">
+            <strong>Problem Statements &amp; Tracks</strong>
+            <span>AI Healthcare, FinTech, GreenTech, Smart Education</span>
+          </div>
+          <span class="search-item-badge">Challenges</span>
+        </a>
+
+        <a href="#why-us" class="search-result-item">
+          <span class="search-item-icon">👥</span>
+          <div class="search-item-info">
+            <strong>Innovation Hacks Community</strong>
+            <span>Join 10K+ developers, innovators, and mentors</span>
+          </div>
+          <span class="search-item-badge">Community</span>
+        </a>
+        <a href="#faq" class="search-result-item">
+          <span class="search-item-icon">❓</span>
+          <div class="search-item-info">
+            <strong>Frequently Asked Questions</strong>
+            <span>Eligibility, rules, submission deadlines &amp; certificates</span>
+          </div>
+          <span class="search-item-badge">FAQ</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Controller (v7.0) -->
+  <script src="js/main.js?v=7.0"></script>
+
+</body>
+
+</html>

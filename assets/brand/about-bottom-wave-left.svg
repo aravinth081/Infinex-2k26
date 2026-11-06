@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 260" fill="none" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+  <defs>
+    <!-- Cyan-to-Sapphire Wave Gradient 1 -->
+    <linearGradient id="aboutWaveGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891B2" stop-opacity="0.90" />
+      <stop offset="45%" stop-color="#0284C7" stop-opacity="0.80" />
+      <stop offset="100%" stop-color="#2563EB" stop-opacity="0.65" />
+    </linearGradient>
+
+    <!-- Deep Electric Cyan Wave Gradient 2 -->
+    <linearGradient id="aboutWaveGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.88" />
+      <stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.75" />
+    </linearGradient>
+
+    <!-- Front Sapphire Accent Wave Gradient 3 -->
+    <linearGradient id="aboutWaveGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E7490" stop-opacity="0.98" />
+      <stop offset="60%" stop-color="#0369A1" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#1E40AF" stop-opacity="0.85" />
+    </linearGradient>
+
+    <!-- Glowing Vector Resonance Lines -->
+    <linearGradient id="aboutLineGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.85" />
+      <stop offset="70%" stop-color="#38BDF8" stop-opacity="0.40" />
+      <stop offset="100%" stop-color="#818CF8" stop-opacity="0.05" />
+    </linearGradient>
+
+    <linearGradient id="aboutLineGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#67E8F9" stop-opacity="0.90" />
+      <stop offset="60%" stop-color="#60A5FA" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#A5B4FC" stop-opacity="0.0" />
+    </linearGradient>
+
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Deep Back Wave (Soft Organic Harmonic) -->
+  <path d="M0,60 C140,85 280,150 420,215 C465,236 505,248 540,252 L540,260 L0,260 Z" fill="url(#aboutWaveGrad1)" />
+
+  <!-- Mid-Tier Dynamic Cyber Wave (Curving S-Crest) -->
+  <path d="M0,105 C110,115 220,175 360,225 C420,245 480,255 540,258 L540,260 L0,260 Z" fill="url(#aboutWaveGrad2)" />
+
+  <!-- Front Power Swoosh -->
+  <path d="M0,155 C90,160 190,205 320,242 C380,252 450,258 540,260 L0,260 Z" fill="url(#aboutWaveGrad3)" />
+
+  <!-- Harmonic Luminous Resonance Contour Lines -->
+  <path d="M0,45 C150,65 290,135 450,205 C485,220 515,232 540,240" stroke="url(#aboutLineGrad1)" stroke-width="1.8" filter="url(#glowCyan)" />
+  <path d="M0,32 C160,52 310,122 470,192 C500,205 525,216 540,225" stroke="url(#aboutLineGrad2)" stroke-width="1.4" />
+  <path d="M0,20 C170,40 330,110 490,180 C512,192 530,202 540,210" stroke="url(#aboutLineGrad1)" stroke-width="1.0" />
+  <path d="M0,10 C180,28 350,98 510,168 C522,175 532,182 540,190" stroke="url(#aboutLineGrad2)" stroke-width="0.8" stroke-dasharray="6 3" />
+
+  <!-- Floating Energy Node Accents -->
+  <circle cx="190" cy="80" r="2.5" fill="#67E8F9" opacity="0.85" />
+  <circle cx="320" cy="138" r="2" fill="#38BDF8" opacity="0.75" />
+  <circle cx="430" cy="195" r="2.5" fill="#22D3EE" opacity="0.8" />
+</svg>

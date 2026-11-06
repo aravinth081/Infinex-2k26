@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>HORIZON X 2K26 | Winner Distinction &amp; Merit Portal</title>
+  <link rel="icon" type="image/png" href="assets/brand/horizon-x-logo.png">
+  <link rel="alternate icon" type="image/png" href="logo.png">
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800&family=Poppins:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Firebase & Cloudinary Cloud Backend & PDF Libraries -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/cms-content.js?v=2.0"></script>
+  <script src="js/cms-engine.js?v=2.0"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="cert-engine.js?v=9.0"></script>
+  
+  <style>
+    :root {
+      --bg-main: #F8FAFC;
+      --bg-secondary: #FFFFFF;
+      --white: #FFFFFF;
+      --navy-primary: #172554;
+      --blue-secondary: #2563EB;
+      --blue-bright: #2563EB;
+      --blue-light: #EFF6FF;
+      --blue-pale: #EFF6FF;
+      --text-primary: #0F172A;
+      --text-secondary: #64748B;
+      --text-muted: #94A3B8;
+      --border-color: #E2E8F0;
+      --border-light: #E2E8F0;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+      --shadow-lg: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --radius-pill: 9999px;
+      --font-heading: 'Plus Jakarta Sans', 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html, body {
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    /* ── NAVBAR ── */
+    .header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo-wrap svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--navy-primary);
+      line-height: 1.1;
+    }
+
+    .brand-name span {
+      color: var(--blue-bright);
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--blue-pale);
+      color: var(--blue-bright);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1.5px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--blue-bright);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #1E40AF;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-secondary {
+      background: #FFFFFF;
+      color: var(--text-primary);
+      border-color: var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+      color: var(--blue-bright);
+    }
+
+    /* ── PAGE CONTENT ── */
+    .page-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    .portal-hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--blue-pale);
+      border: 1px solid var(--blue-light);
+      color: var(--blue-bright);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-family: var(--font-heading);
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: var(--navy-primary);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .page-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* Verification Card */
+    .verify-card {
+      background: var(--white);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .tiers-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .tier-box {
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+    }
+
+    .tier-box-icon {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .tier-box-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy-primary);
+    }
+
+    .tier-box-desc {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      margin-bottom: 8px;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 50px;
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0 16px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--navy-primary);
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--blue-bright);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(22, 132, 216, 0.18);
+    }
+
+    .error-box {
+      display: none;
+      background: #FFF1F2;
+      border: 1px solid #FECDD3;
+      color: #E11D48;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .success-box {
+      display: none;
+      background: #F0FDF4;
+      border: 1px solid #86EFAC;
+      color: #166534;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .quota-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: #EFF6FF;
+      border: 1px solid #BFDBFE;
+      color: #1D4ED8;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Modal */
+    .wmodal {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 45, 92, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      cursor: pointer;
+    }
+
+    .wmodal.on {
+      display: flex;
+    }
+
+    .wmodal-box {
+      background: var(--white);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg);
+      cursor: default;
+      width: 100%;
+      max-width: 940px;
+      max-height: 94vh;
+      max-height: 94dvh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .wmodal-header {
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-secondary);
+    }
+
+    .wmodal-header span {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy-primary);
+    }
+
+    .wmodal-close {
+      background: var(--white);
+      border: 1px solid var(--border-color);
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      color: var(--navy-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wmodal-body {
+      padding: 16px 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      -webkit-overflow-scrolling: touch;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .cert-frame {
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: visible;
+      box-shadow: var(--shadow-md);
+      width: 100%;
+      max-width: 900px;
+      margin: auto 0;
+    }
+
+    #winner-canvas {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: calc(88vh - 170px);
+      display: block;
+      margin: 0 auto;
+      aspect-ratio: 3508 / 2480;
+      border-radius: 6px;
+    }
+
+    .wmodal-footer {
+      padding: 18px 24px;
+      border-top: 1px solid var(--border-light);
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        height: 64px;
+        padding: 0 16px;
+      }
+      .brand-logo-wrap {
+        width: 38px;
+        height: 38px;
+      }
+      .brand-name {
+        font-size: 1.05rem;
+      }
+      .brand-sub {
+        font-size: 0.58rem;
+        letter-spacing: 1px;
+      }
+      .page-wrapper {
+        padding: 36px 16px 60px;
+      }
+      .page-title {
+        font-size: 1.85rem;
+      }
+      .tiers-preview-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .verify-card {
+        padding: 24px 16px;
+      }
+      .verify-card form > div[style*="display: flex"] {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+      }
+      .verify-card form .btn {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+      .wmodal {
+        padding: 10px;
+      }
+      .wmodal-box {
+        max-height: 94vh;
+        border-radius: 16px;
+      }
+      .wmodal-header {
+        padding: 12px 16px;
+      }
+      .wmodal-body {
+        padding: 12px 10px;
+      }
+      #winner-canvas {
+        width: 100% !important;
+        max-height: none !important;
+      }
+      .wmodal-footer {
+        padding: 14px 16px;
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .wmodal-footer > div {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+      }
+      .wmodal-footer .btn {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+
+    .header-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .show-xs {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .hide-xs {
+        display: none !important;
+      }
+      .show-xs {
+        display: inline !important;
+      }
+      .header-nav-actions {
+        gap: 6px !important;
+      }
+      .header-nav-actions .btn {
+        padding: 8px 10px !important;
+        font-size: 0.78rem !important;
+        min-height: 40px !important;
+      }
+      .header-inner {
+        padding: 0 12px;
+      }
+      .brand-sub {
+        display: none;
+      }
+      .page-title {
+        font-size: 1.55rem;
+      }
+      .page-sub {
+        font-size: 0.88rem;
+      }
+      .badge-pill {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+      }
+      .verify-card {
+        padding: 20px 14px;
+        border-radius: var(--radius-md);
+      }
+      .form-control {
+        height: 48px;
+        font-size: 16px !important; /* Prevents iOS auto-zoom */
+      }
+      .wmodal-box {
+        max-height: 94dvh;
+      }
+      .wmodal-header span {
+        font-size: 0.95rem;
+      }
+      .btn {
+        min-height: 44px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .header-inner {
+        padding: 0 8px !important;
+      }
+      .brand {
+        gap: 8px !important;
+      }
+      .brand-logo-wrap {
+        width: 34px !important;
+        height: 34px !important;
+      }
+      .brand-name {
+        font-size: 0.95rem !important;
+      }
+      .header-nav-actions {
+        gap: 4px !important;
+      }
+      .header-nav-actions .btn {
+        padding: 6px 8px !important;
+        font-size: 0.72rem !important;
+      }
+      .page-wrapper {
+        padding: 24px 10px 48px !important;
+      }
+      .page-title {
+        font-size: 1.35rem !important;
+      }
+      .verify-card {
+        padding: 16px 10px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-logo-wrap">
+          <img src="assets/brand/horizon-x-logo.png" alt="HORIZON X 2K26 Logo" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">HORIZON X <span>2K26</span></span>
+          <span class="brand-sub">GLOBAL AI HACKATHON • INNOVATION HACKS</span>
+        </div>
+      </a>
+
+      <div class="header-nav-actions">
+        <a href="control.html" class="btn btn-secondary btn-sm" target="_blank">
+          <span>⚙️ <span class="hide-xs">Admin Panel</span><span class="show-xs">Admin</span></span>
+        </a>
+        <a href="index.html" class="btn btn-secondary btn-sm">
+          <span>← <span class="hide-xs">Back to Home</span><span class="show-xs">Home</span></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Body -->
+  <div class="page-wrapper">
+    <div class="portal-hero">
+      <div class="badge-pill">
+        <span>★ HORIZON X 2K26 Distinction &amp; Honors</span>
+      </div>
+      <h1 class="page-title">Merit &amp; Honor Verification Portal</h1>
+      <p class="page-sub">
+        Official verification portal for HORIZON X 2K26 distinction recipients, global hackathon winners, and top AI engineering teams.
+      </p>
+    </div>
+
+    <div class="verify-card">
+      <div class="tiers-preview-grid">
+        <div class="tier-box">
+          <div class="tier-box-icon">🥇</div>
+          <div class="tier-box-title">Excellence Award</div>
+          <div class="tier-box-desc">First Rank & Outstanding Project</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-icon">🥈</div>
+          <div class="tier-box-title">High Distinction</div>
+          <div class="tier-box-desc">Second Rank & Exceptional Engagement</div>
+        </div>
+        <div class="tier-box">
+          <div class="tier-box-icon">🥉</div>
+          <div class="tier-box-title">Merit Honors</div>
+          <div class="tier-box-desc">Third Rank & Active Innovation</div>
+        </div>
+      </div>
+
+      <form id="winnerForm" onsubmit="event.preventDefault(); verifyWinnerPasskey();">
+        <div class="form-group">
+          <label for="winnerName" class="form-label">Recipient Full Name <span style="color:#ef4444;">*</span></label>
+          <input 
+            type="text" 
+            id="winnerName" 
+            class="form-control" 
+            placeholder="Enter your full name as it should appear on certificate (e.g. Student Name)..." 
+            required 
+            autocomplete="name"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="winnerPasskey" class="form-label">Winner Team Secret Passkey <span style="color:#ef4444;">*</span></label>
+          <input 
+            type="text" 
+            id="winnerPasskey" 
+            class="form-control" 
+            placeholder="Enter team secret passkey..." 
+            required 
+            style="font-family:'Space Mono',monospace; letter-spacing:1.5px; font-weight:700; text-transform:uppercase;"
+            autocomplete="off"
+          >
+          <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 6px;">
+            💡 Enter the secret passkey issued to your winning hackathon team by INNOVATION HACKS organizers.
+          </div>
+        </div>
+
+        <div class="error-box" id="errorBox"></div>
+        <div class="success-box" id="successBox"></div>
+
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <button type="submit" class="btn btn-primary" id="verifyBtn" style="flex: 1;">
+            <span>Authenticate & Generate Distinction Certificate</span>
+            <span>→</span>
+          </button>
+          <a href="index.html" class="btn btn-secondary">Back to Main Website</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Verification Modal -->
+  <div class="wmodal" id="wmodal">
+    <div class="wmodal-box">
+      <div class="wmodal-header">
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+          <span id="modalTitle">🎓 Verified Distinction Certificate — INNOVATION HACKS</span>
+          <span class="quota-badge" id="modalQuotaBadge">Verified Winner</span>
+        </div>
+        <button class="wmodal-close" onclick="closeWModal()">✕</button>
+      </div>
+
+      <div style="padding: 10px 24px; background: #F8FAFC; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+        <div style="font-size: 0.85rem; color: var(--navy-primary);">
+          <strong>Recipient:</strong> <span id="modalRecipient">—</span> · <strong>Team:</strong> <span id="modalTeam">—</span>
+        </div>
+        <div style="font-size: 0.85rem; color: #166534; font-weight: 600;" id="modalQuotaInfo">
+          Quota Verified
+        </div>
+      </div>
+
+      <div class="wmodal-body">
+        <div class="cert-frame">
+          <canvas id="winner-canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="wmodal-footer">
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">
+          INNOVATION HACKS Official Distinction Record · HackNowa 2026
+        </span>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <button class="btn btn-secondary" onclick="dlWinnerPNG()">📷 Download PNG (300 DPI)</button>
+          <button class="btn btn-primary" onclick="dlWinnerPDF()">📄 Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let _winnerCodes = {};
+    let _activeRecipientName = '';
+    let _activeCodeData = null;
+    const canvas = document.getElementById('winner-canvas');
+    const modal = document.getElementById('wmodal');
+
+    // Fetch winnerCodes from Firebase + LocalStorage
+    async function loadWinnerCodes() {
+      // 1. LocalStorage
+      try {
+        const local = localStorage.getItem('winnerCodes');
+        if (local) {
+          _winnerCodes = JSON.parse(local);
+        } else {
+          _winnerCodes = {};
+        }
+      } catch (e) {
+        _winnerCodes = {};
+      }
+
+      // 2. Firebase Cloud Sync
+      const backend = window.HorizonBackend || window.FirebaseBackend || window.SupabaseBackend;
+      if (backend && typeof backend.fetchAdminConfig === 'function') {
+        try {
+          const cfg = await backend.fetchAdminConfig();
+          if (cfg && cfg.winnerCodes) {
+            _winnerCodes = Object.assign({}, cfg.winnerCodes);
+            try { localStorage.setItem('winnerCodes', JSON.stringify(_winnerCodes)); } catch(e) {}
+          }
+        } catch (err) {
+          console.warn('Winner codes cloud fetch notice:', err);
+        }
+      }
+    }
+
+    // Call on load
+    loadWinnerCodes();
+
+    async function verifyWinnerPasskey() {
+      const nameInput = document.getElementById('winnerName');
+      const passkeyInput = document.getElementById('winnerPasskey');
+      const errorBox = document.getElementById('errorBox');
+      const successBox = document.getElementById('successBox');
+      const btn = document.getElementById('verifyBtn');
+
+      if (errorBox) { errorBox.style.display = 'none'; errorBox.innerHTML = ''; }
+      if (successBox) { successBox.style.display = 'none'; successBox.innerHTML = ''; }
+
+      const enteredName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : '';
+      const enteredCode = (passkeyInput && passkeyInput.value.trim()) ? passkeyInput.value.trim().toUpperCase() : '';
+
+      if (!enteredName) {
+        if (errorBox) {
+          errorBox.textContent = 'Please enter your full recipient name as you wish it to appear on the certificate.';
+          errorBox.style.display = 'block';
+        }
+        if (nameInput) nameInput.focus();
+        return;
+      }
+
+      if (!enteredCode) {
+        if (errorBox) {
+          errorBox.textContent = 'Please enter your team\'s secret passkey.';
+          errorBox.style.display = 'block';
+        }
+        if (passkeyInput) passkeyInput.focus();
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span>Verifying Secret Passkey & Quota...</span>';
+
+      try {
+        // Refresh codes from Firestore/local to get real-time quota state
+        await loadWinnerCodes();
+
+        // Find code (case-insensitive)
+        const codeKey = Object.keys(_winnerCodes).find(k => k.trim().toUpperCase() === enteredCode);
+
+        if (!codeKey) {
+          if (errorBox) {
+            errorBox.innerHTML = `<strong>❌ Invalid Winner Passkey:</strong> The secret passkey "<code>${enteredCode}</code>" was not found in our hackathon database. Please verify the code with your team lead or INNOVATION HACKS organizers.`;
+            errorBox.style.display = 'block';
+          }
+          if (typeof Swal !== 'undefined') {
+            Swal.fire({
+              title: 'Not Registered',
+              html: `
+                <div style="text-align:center;padding:4px 0;">
+                  <p style="font-size:15px;color:#1e293b;margin-bottom:12px;line-height:1.5;">
+                    The secret passkey <strong style="color:#0B2D5C;">${enteredCode}</strong> was not found in our hackathon database.
+                  </p>
+                  <div style="background:#F8FAFC;border:1.5px solid #E2E8F0;border-radius:12px;padding:12px 14px;font-size:13px;color:#64748b;line-height:1.5;text-align:left;">
+                    🏆 <strong>Authorized Winner Access Only:</strong><br>
+                    Please verify the passkey issued to your team by the organizers or check with your team lead.
+                  </div>
+                </div>
+              `,
+              icon: 'error',
+              confirmButtonText: 'OK, Understood',
+              confirmButtonColor: '#155EEF',
+              background: '#FFFFFF'
+            });
+          }
+          return;
+        }
+
+        const codeData = _winnerCodes[codeKey];
+        if (!Array.isArray(codeData.claimedMembers)) {
+          codeData.claimedMembers = [];
+        }
+
+        const maxQuota = parseInt(codeData.maxQuota || 4, 10);
+        const normName = enteredName.toLowerCase();
+
+        // Check if member already claimed under this passkey
+        const existingIdx = codeData.claimedMembers.findIndex(m => {
+          const mName = typeof m === 'string' ? m : (m && m.name ? m.name : '');
+          return mName.toLowerCase() === normName;
+        });
+
+        const isAlreadyClaimed = (existingIdx !== -1);
+
+        if (!isAlreadyClaimed) {
+          // Check if quota is full
+          if (codeData.claimedMembers.length >= maxQuota) {
+            const claimedList = codeData.claimedMembers.map(m => typeof m === 'string' ? m : m.name).filter(Boolean);
+            if (errorBox) {
+              errorBox.innerHTML = `
+                <strong>❌ Member Quota Reached (${maxQuota} / ${maxQuota} Slots):</strong><br>
+                This secret code (<strong>${codeKey}</strong> · ${codeData.teamName || 'Winning Team'}) was allocated for a maximum of <strong>${maxQuota} members</strong>.<br>
+                All ${maxQuota} certificates have already been generated by:<br>
+                <div style="margin: 8px 0; padding: 6px 10px; background: rgba(239,68,68,0.08); border-radius: 6px; font-weight: 600;">
+                  ${claimedList.map(n => '• ' + n).join('<br>')}
+                </div>
+                If you are a member of this team, please contact the organizers to increase your team's quota.
+              `;
+              errorBox.style.display = 'block';
+            }
+            return;
+          }
+
+          // Register new claim!
+          codeData.claimedMembers.push({
+            name: enteredName,
+            claimedAt: new Date().toISOString()
+          });
+          codeData.usedCount = codeData.claimedMembers.length;
+
+          // Save to LocalStorage
+          try {
+            localStorage.setItem('winnerCodes', JSON.stringify(_winnerCodes));
+          } catch(e) {}
+
+          // Save to Firebase Firestore
+          const backend = window.HorizonBackend || window.FirebaseBackend || window.SupabaseBackend;
+          if (backend) {
+            try {
+              if (typeof backend.saveAdminConfig === 'function') {
+                await backend.saveAdminConfig({ winnerCodes: _winnerCodes });
+              }
+
+              const certId = 'HX-WIN-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+              const claimDoc = {
+                name: enteredName,
+                code: codeKey,
+                rank: codeData.rank || 1,
+                rankLabel: codeData.label || ('Rank ' + (codeData.rank || 1)),
+                teamName: codeData.teamName || '',
+                certId: certId,
+                type: codeData.tplKey || ('winner' + (codeData.rank || 1)),
+                date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+                claimedAt: new Date().toLocaleString()
+              };
+
+              if (typeof backend.saveWinnerClaim === 'function') {
+                await backend.saveWinnerClaim(claimDoc);
+              }
+              if (typeof backend.saveCertificate === 'function') {
+                await backend.saveCertificate(claimDoc);
+              }
+            } catch(syncErr) {
+              console.warn('Firebase claim registration notice:', syncErr);
+            }
+          }
+
+          // Save to LocalStorage for instant admin panel synchronization
+          try {
+            const certId = 'IH-WIN-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+            const localClaim = {
+              name: enteredName,
+              code: codeKey,
+              rank: codeData.rank || 1,
+              rankLabel: codeData.label || ('Rank ' + (codeData.rank || 1)),
+              teamName: codeData.teamName || '',
+              certId: certId,
+              type: codeData.tplKey || ('winner' + (codeData.rank || 1)),
+              date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }),
+              claimedAt: new Date().toLocaleString(),
+              timestamp: new Date().toISOString()
+            };
+            const localWins = JSON.parse(localStorage.getItem('admin_winner_claims') || '[]');
+            localWins.push(localClaim);
+            localStorage.setItem('admin_winner_claims', JSON.stringify(localWins));
+
+            const localCerts = JSON.parse(localStorage.getItem('admin_certificates') || '[]');
+            localCerts.push(localClaim);
+            localStorage.setItem('admin_certificates', JSON.stringify(localCerts));
+          } catch(e) {}
+
+          if (successBox) {
+            successBox.innerHTML = `<strong>✅ Authentication Confirmed!</strong> Distinction certificate generated for <strong>${enteredName}</strong> (Claim ${codeData.claimedMembers.length} of ${maxQuota}).`;
+            successBox.style.display = 'block';
+          }
+
+        } else {
+          // Already claimed - allow instant viewing and re-download without consuming a slot
+          if (successBox) {
+            successBox.innerHTML = `<strong>✅ Authenticated!</strong> Welcome back, <strong>${enteredName}</strong>. Displaying your official certificate (Slot ${existingIdx + 1} of ${maxQuota}).`;
+            successBox.style.display = 'block';
+          }
+        }
+
+        _activeRecipientName = enteredName;
+        _activeCodeData = codeData;
+
+        // Render certificate using uploaded template via CertEngine
+        const templateKey = codeData.tplKey || ('winner' + (codeData.rank || 1));
+        if (window.CertEngine && typeof window.CertEngine.renderFull === 'function') {
+          await window.CertEngine.renderFull(canvas, '', enteredName, templateKey);
+        }
+
+        // Update modal info
+        const modalTitle = document.getElementById('modalTitle');
+        if (modalTitle) modalTitle.textContent = `🏆 ${codeData.label || 'Distinction Certificate'} — INNOVATION HACKS`;
+        const modalRecipient = document.getElementById('modalRecipient');
+        if (modalRecipient) modalRecipient.textContent = enteredName;
+        const modalTeam = document.getElementById('modalTeam');
+        if (modalTeam) modalTeam.textContent = codeData.teamName || 'Winning Team';
+        const modalQuotaBadge = document.getElementById('modalQuotaBadge');
+        if (modalQuotaBadge) modalQuotaBadge.textContent = `${codeData.claimedMembers.length} / ${maxQuota} Members Claimed`;
+        const modalQuotaInfo = document.getElementById('modalQuotaInfo');
+        if (modalQuotaInfo) modalQuotaInfo.textContent = `Passkey: ${codeKey}`;
+
+        // Show modal
+        modal.classList.add('on');
+
+      } catch (err) {
+        console.error('Winner passkey verification failed:', err);
+        if (errorBox) {
+          errorBox.textContent = 'Error processing verification: ' + err.message;
+          errorBox.style.display = 'block';
+        }
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<span>Authenticate & Generate Distinction Certificate</span> <span>→</span>';
+      }
+    }
+
+    function closeWModal() {
+      modal.classList.remove('on');
+    }
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeWModal();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('on')) {
+        closeWModal();
+      }
+    });
+
+    function dlWinnerPNG() {
+      if (window.CertEngine && typeof window.CertEngine.downloadPNG === 'function') {
+        const title = (_activeCodeData && _activeCodeData.label) ? _activeCodeData.label.replace(/[^a-zA-Z0-9]/g, '_') : 'Distinction';
+        window.CertEngine.downloadPNG(canvas, `INNOVATION-HACKS-${title}-${_activeRecipientName.replace(/\s+/g, '_')}.png`);
+      }
+    }
+
+    function dlWinnerPDF() {
+      if (window.CertEngine && typeof window.CertEngine.downloadPDF === 'function') {
+        const title = (_activeCodeData && _activeCodeData.label) ? _activeCodeData.label.replace(/[^a-zA-Z0-9]/g, '_') : 'Distinction';
+        window.CertEngine.downloadPDF(canvas, `INNOVATION-HACKS-${title}-${_activeRecipientName.replace(/\s+/g, '_')}.pdf`);
+      }
+    }
+  </script>
+</body>
+
+</html>

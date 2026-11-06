@@ -1,0 +1,5 @@
+scripts/
+unstop-sync.js
+supabase-schema.sql
+firestore.rules
+.env.example

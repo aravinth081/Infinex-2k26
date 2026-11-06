@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 240" fill="none" preserveAspectRatio="none" style="width: 100%; height: 100%;">
+  <defs>
+    <linearGradient id="waveGrad1_r" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#155EEF" stop-opacity="0.95" />
+      <stop offset="60%" stop-color="#0284C7" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.6" />
+    </linearGradient>
+    <linearGradient id="waveGrad2_r" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0B40B3" stop-opacity="0.98" />
+      <stop offset="50%" stop-color="#155EEF" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0.75" />
+    </linearGradient>
+    <linearGradient id="lineGrad_r" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#BAE6FD" stop-opacity="0.1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep accent wave (mirrored for bottom-right corner) -->
+  <path d="M500,80 C380,95 260,160 120,210 C70,228 30,238 0,240 L0,240 L500,240 Z" fill="url(#waveGrad1_r)" />
+
+  <!-- Front solid blue swoosh -->
+  <path d="M500,130 C400,135 300,185 160,225 C100,236 50,240 0,240 L500,240 Z" fill="url(#waveGrad2_r)" />
+
+  <!-- Dynamic swoosh lines -->
+  <path d="M500,60 C360,80 240,140 80,200" stroke="url(#lineGrad_r)" stroke-width="1.5" />
+  <path d="M500,45 C350,70 220,130 50,190" stroke="url(#lineGrad_r)" stroke-width="1.2" />
+  <path d="M500,30 C340,60 200,120 20,180" stroke="url(#lineGrad_r)" stroke-width="1" />
+  <path d="M500,15 C330,50 180,110 0,170" stroke="url(#lineGrad_r)" stroke-width="0.8" />
+</svg>

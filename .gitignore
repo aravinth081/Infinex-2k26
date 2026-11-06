@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+patch_fonts.py
+cinzel_b64.txt
+cinzel_med_b64.txt
+global-Ai-Hackathon---certificate--main/
+scratch/
+scratch_*
+test_*
+crop_center_*
+content_preview.png
+index.full-backup.html
+node_modules/
+.env
+
